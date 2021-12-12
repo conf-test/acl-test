@@ -1,0 +1,10 @@
+#Comments are printed in a 'formatted' or 'semiformatted' menu.
+#And can contain html tags. <hr>
+base referer
+poly map "Could I have a menu, please?" 0,0 0,10 10,10 10,0
+rect .. 0,0 77,27 "the directory of the referer"
+circle http://www.inetnebr.example.com/lincoln/feedback/ 195,0 305,27
+rect another_file "in same directory as referer" 306,0 419,27
+point http://www.zyzzyva.example.com/ 100,100
+point http://www.tripod.example.com/ 200,200
+rect mailto:nate@tripod.example.com 100,150 200,0 "Bugs?"

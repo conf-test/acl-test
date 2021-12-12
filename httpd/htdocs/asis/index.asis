@@ -1,0 +1,4 @@
+Status: 301 Now where did I leave that URL
+Location: http://xyz.example.com/foo/bar.html
+Content-type: text/html
+<html><body><h1>It works!</h1></body></html>
