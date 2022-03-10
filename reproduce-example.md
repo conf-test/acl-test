@@ -9,4 +9,4 @@ $ wget 127.0.0.1:8080/extensions/MW-OAuth2Client/vendors/oauth2-client/vendor/ph
 
 ```
 $ docker run -p 127.0.0.1:8080:80 vulfocus/drupal-cve_2019_6340
-$ wget 127.0.0.1:8080//core/modules/system/tests/fixtures/update/drupal-8.6.0-minimal-with-warm-caches.sql.gz
+$ wget 127.0.0.1:8080/core/modules/system/tests/fixtures/update/drupal-8.6.0-minimal-with-warm-caches.sql.gz
