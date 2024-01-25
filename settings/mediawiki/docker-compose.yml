@@ -20,6 +20,9 @@ services:
     stdin_open: true
     links:
       - mysql
+    networks:
+      - backend
+      
   mysql:
     image: mariadb:10.4
     container_name: mediawiki_mysql
@@ -38,3 +41,12 @@ services:
         '--wait_timeout=28800',
         '--max_allowed_packet=32505856'
     ]
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: overlay
+    ipam:
+      config:
+        - subnet: 192.168.18.0/24
