@@ -1,0 +1,40 @@
+version: "3.8"
+services:
+  web:
+    build: .
+    privileged: true
+    cpus: 3
+    ports:
+      - "80:80"
+    volumes:
+      - ${conf}:/tmp/conf:ro
+      - ${htdocs}:/tmp/htdocs:ro
+      - ${modules}:/tmp/modules:ro
+      - ${acltest}:/acl_test:z
+      - /sys/kernel/debug:/sys/kernel/debug:rw # do we need this?
+      - /lib/modules:/lib/modules:ro # do we need this?
+      - /usr/src:/usr/src:ro # do we need this?
+      - /etc/localtime:/etc/localtime:ro # do we need this?
+    command: /acl_test/docker/mediawiki/run.sh 
+    tty: true
+    stdin_open: true
+    links:
+      - mysql
+  mysql:
+    image: mariadb:10.4
+    container_name: mediawiki_mysql
+    restart: always
+    volumes:
+      - ${tmp_mysql}:/var/lib/mysql
+      - ${mysql_conf_file}:/etc/mysql/my.cnf
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=wikimirror
+      - MYSQL_USER=wikimirror
+      - MYSQL_PASSWORD=totowiki
+    ports:
+      - "3306:3306"
+    command: [
+        '--wait_timeout=28800',
+        '--max_allowed_packet=32505856'
+    ]
